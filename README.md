@@ -424,7 +424,7 @@ axolver/
     trainer.py                 # Training loop
     evaluator.py               # Evaluation and beam search
     model/
-      base.py                  # Seq2SeqModel (abstract base)
+      base.py                  # BaseModel (abstract base)
       transformer.py           # Transformer architecture
       rnn.py                   # LSTM / GRU
     envs/

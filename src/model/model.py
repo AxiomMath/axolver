@@ -1,7 +1,7 @@
 from logging import getLogger
 
-from src.model.rnn import RNNSeq2Seq
-from src.model.transformer import TransformerSeq2Seq
+from src.model.rnn import RNNModel
+from src.model.transformer import TransformerModel
 
 logger = getLogger()
 
@@ -26,9 +26,9 @@ def check_model_params(params):
 
 def build_model(params):
     if params.model_type == "transformer":
-        model = TransformerSeq2Seq(params)
+        model = TransformerModel(params)
     else:
-        model = RNNSeq2Seq(params)
+        model = RNNModel(params)
 
     logger.info(f"Number of parameters: {sum(p.numel() for p in model.parameters() if p.requires_grad)}")
     model.to(params.device)

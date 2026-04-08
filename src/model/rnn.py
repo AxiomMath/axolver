@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from src.model.base import Seq2SeqModel
+from src.model.base import BaseModel
 
 
 class RNNEncoder(nn.Module):
@@ -78,7 +78,7 @@ class RNNDecoder(nn.Module):
         return logits, new_hidden
 
 
-class RNNSeq2Seq(Seq2SeqModel):
+class RNNModel(BaseModel):
     def __init__(self, params):
         super().__init__(params)
         self.encoder = RNNEncoder(params)

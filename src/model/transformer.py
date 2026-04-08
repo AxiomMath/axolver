@@ -5,7 +5,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from src.model.base import Seq2SeqModel
+from src.model.base import BaseModel
 
 logger = getLogger()
 
@@ -231,7 +231,7 @@ class TransformerLayer(nn.Module):
         return x
 
 
-class TransformerModel(nn.Module):
+class TransformerBackbone(nn.Module):
     def __init__(self, params, is_encoder, with_output):
         super().__init__()
         self.is_encoder = is_encoder
@@ -346,13 +346,13 @@ class TransformerModel(nn.Module):
         return hidden
 
 
-class TransformerSeq2Seq(Seq2SeqModel):
+class TransformerModel(BaseModel):
     def __init__(self, params):
         super().__init__(params)
         if self.architecture in ("encoder_only", "encoder_decoder"):
-            self.encoder = TransformerModel(params, is_encoder=True, with_output=(self.architecture == "encoder_only"))
+            self.encoder = TransformerBackbone(params, is_encoder=True, with_output=(self.architecture == "encoder_only"))
         if self.architecture in ("decoder_only", "encoder_decoder"):
-            self.decoder = TransformerModel(params, is_encoder=False, with_output=True)
+            self.decoder = TransformerBackbone(params, is_encoder=False, with_output=True)
 
     def _get_decoder(self, task):
         return self.decoder

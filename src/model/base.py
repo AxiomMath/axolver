@@ -7,9 +7,9 @@ import torch.nn.functional as F
 logger = getLogger()
 
 
-class Seq2SeqModel(nn.Module):
+class BaseModel(nn.Module):
     """
-    Base class for all seq2seq models (Transformer, LSTM, GRU).
+    Base class for all models (Transformer, LSTM, GRU).
     Shared logic: forward (training), decode (encoder-only), generate, beam_generate.
     """
 
