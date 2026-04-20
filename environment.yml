@@ -1,0 +1,11 @@
+name: env_axolver
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip
+  - numpy
+  - pytorch
+  - sympy
+  - matplotlib
+  - jupyterlab
