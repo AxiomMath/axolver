@@ -10,12 +10,13 @@ Axolver is a complete rewrite of the [Int2Int](https://github.com/f-charton/Int2
 
 ## Setup
 
-Axolver requires Python >= 3.10, PyTorch >= 2.0, and NumPy. Optional: SymPy (for integration tasks), Numba (for JIT acceleration in some generators).
-
-```bash
-git clone https://github.com/AxiomMath/axolver
-cd axolver
-pip install torch numpy sympy numba
+Requirements are contained in environment.yml, you can set up a micromamba env with
+```
+micromamba env create -f environment.yml
+```
+and then run
+```
+micromamba activate env_axolver
 ```
 
 **Hardware:** Axolver auto-detects NVIDIA GPUs (CUDA), Apple Silicon (MPS), or falls back to CPU. No configuration needed.
@@ -105,7 +106,7 @@ These tasks operate on integers encoded in a configurable base (`--base`, defaul
 
 | Task | Description |
 |------|-------------|
-| `gcd` | Greatest common divisor of two integers | 
+| `gcd` | Greatest common divisor of two integers |
 | `fraction_simplify` | Simplify ka/kb to a/b |
 | `fraction_round` | Compute floor(a/b) |
 | `fraction_add` | Add a/b + c/d, return in lowest terms |
@@ -153,7 +154,7 @@ These tasks operate on random graphs with at most `--max_nodes` nodes and `--max
 
 ### Synthetic
 
-Simple sequence manipulation tasks on symbolic tokens (integers 0 to n-1). Useful for testing and debugging. Parameters follow the pattern `--<task>_max_len` and `--<task>_n_tokens` (e.g. `--copy_max_len`, `--reverse_n_tokens`). 
+Simple sequence manipulation tasks on symbolic tokens (integers 0 to n-1). Useful for testing and debugging. Parameters follow the pattern `--<task>_max_len` and `--<task>_n_tokens` (e.g. `--copy_max_len`, `--reverse_n_tokens`).
 
 | Task | Description |
 |------|-------------|
@@ -438,11 +439,11 @@ axolver/
 
 ## Results replication
 
-We replicated results of several papers in the AI4math community. 
+We replicated results of several papers in the AI4math community.
 
 ### Summary Table
 
-| Task | Paper | Paper Accuracy | Our Accuracy | 
+| Task | Paper | Paper Accuracy | Our Accuracy |
 |------|-------|-----------|----------|
 | Integration | Lample & Charton, "Deep Learning for Symbolic Mathematics", ICLR 2020. [arXiv:1912.01412](https://arxiv.org/abs/1912.01412). | 98.4% (BWD) | 97.4% |
 | Matrix Transpose | Charton, "Linear algebra with transformers", TMLR 2022. [arXiv:2112.01898](https://arxiv.org/abs/2112.01898). | 99.8% (5x5, P10) | 100% |
@@ -481,4 +482,4 @@ This repository uses the Apache-2.0 License. See [LICENSE](LICENSE) for details.
 
 ## Acknowledgements
 
-The original code of Int2Int was written by François Charton, and can be found [here](https://github.com/f-charton/Int2Int). 
+The original code of Int2Int was written by François Charton, and can be found [here](https://github.com/f-charton/Int2Int).
